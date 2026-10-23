@@ -25,7 +25,7 @@ on:
         options: [upstream, checked-in]
 
 concurrency:
-  group: abdservice-cloudflare-production
+  group: worker-20261023-cloudflare-production
   cancel-in-progress: false
 
 permissions:
@@ -38,7 +38,7 @@ jobs:
     timeout-minutes: 20
     env:
       CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
-      WORKER_URL: https://abdservice-secure.fatdot.workers.dev
+      WORKER_URL: https://worker-20261023.fatdot.workers.dev
 
     steps:
       - name: Check out the GitHub source

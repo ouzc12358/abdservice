@@ -4,7 +4,7 @@ import { chmod, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const destination = process.argv[2];
-const keychainService = process.argv[3] || "abdservice-secure.cloudflare";
+const keychainService = process.argv[3] || "worker-20261023.cloudflare";
 
 if (!destination || !path.isAbsolute(destination)) {
   throw new Error("Usage: node scripts/generate-deploy-secrets.mjs /absolute/path/to/secrets.env [keychain-service]");
@@ -23,7 +23,7 @@ await writeFile(destination, dotenv, { encoding: "utf8", flag: "wx", mode: 0o600
 await chmod(destination, 0o600);
 
 if (process.platform === "darwin") {
-  for (const account of ["ADMIN", "KEY"]) {
+  for (const account of Object.keys(secrets)) {
     execFileSync("/usr/bin/security", [
       "add-generic-password",
       "-U",

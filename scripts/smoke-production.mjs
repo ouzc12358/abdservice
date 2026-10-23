@@ -2,8 +2,8 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 
 const baseUrl = new URL(process.argv[2] || "");
-const keychainService = process.argv[3] || "abdservice-secure.cloudflare";
-const userAgent = "abdservice-production-smoke/1.0";
+const keychainService = process.argv[3] || "worker-20261023.cloudflare";
+const userAgent = "edge-production-smoke/1.0";
 
 if (baseUrl.protocol !== "https:") throw new Error("The smoke-test URL must use HTTPS");
 

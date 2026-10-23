@@ -7,7 +7,7 @@ if (!baseUrl) {
 const response = await fetch(`${baseUrl}/login`, {
   headers: {
     Accept: 'text/html',
-    'User-Agent': 'abdservice-github-smoke/1.0',
+    'User-Agent': 'edge-github-smoke/1.0',
   },
 });
 const body = await response.text();

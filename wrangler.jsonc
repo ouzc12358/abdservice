@@ -1,8 +1,8 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "abdservice-secure",
+  "name": "worker-20261023",
   "main": "src/index.js",
-  "compatibility_date": "2026-09-12",
+  "compatibility_date": "2026-10-23",
   "compatibility_flags": ["nodejs_compat"],
   "workers_dev": true,
   "preview_urls": false,
@@ -23,7 +23,7 @@
   "kv_namespaces": [
     {
       "binding": "KV",
-      "id": "f685a4f629b64d878b33a6e92beccba5"
+      "id": "a16e72ff50f9486dad0a702744377f21"
     }
   ],
   "assets": {
@@ -36,7 +36,7 @@
   "ratelimits": [
     {
       "name": "LOGIN_RATE_LIMITER",
-      "namespace_id": "72473101",
+      "namespace_id": "72473201",
       "simple": {
         "limit": 8,
         "period": 60
@@ -44,7 +44,7 @@
     },
     {
       "name": "ADMIN_RATE_LIMITER",
-      "namespace_id": "72473102",
+      "namespace_id": "72473202",
       "simple": {
         "limit": 240,
         "period": 60
@@ -54,7 +54,7 @@
   "analytics_engine_datasets": [
     {
       "binding": "SECURITY_ANALYTICS",
-      "dataset": "abdservice_security"
+      "dataset": "worker_20261023_security"
     }
   ],
   "observability": {
