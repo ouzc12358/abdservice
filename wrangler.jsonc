@@ -1,0 +1,75 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "abdservice-secure",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-12",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": false,
+  "minify": true,
+  "upload_source_maps": true,
+  "vars": {
+    "DEBUG": "false",
+    "OFF_LOG": "true"
+  },
+  "secrets": {
+    "required": [
+      "ADMIN",
+      "KEY",
+      "SESSION_SECRET",
+      "DATA_ENCRYPTION_KEY"
+    ]
+  },
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "f685a4f629b64d878b33a6e92beccba5"
+    }
+  ],
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "html_handling": "none",
+    "not_found_handling": "none",
+    "run_worker_first": true
+  },
+  "ratelimits": [
+    {
+      "name": "LOGIN_RATE_LIMITER",
+      "namespace_id": "72473101",
+      "simple": {
+        "limit": 8,
+        "period": 60
+      }
+    },
+    {
+      "name": "ADMIN_RATE_LIMITER",
+      "namespace_id": "72473102",
+      "simple": {
+        "limit": 240,
+        "period": 60
+      }
+    }
+  ],
+  "analytics_engine_datasets": [
+    {
+      "binding": "SECURITY_ANALYTICS",
+      "dataset": "abdservice_security"
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "redact_query_string": true,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 0.1,
+      "invocation_logs": true,
+      "persist": true
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.01,
+      "persist": true
+    }
+  }
+}
